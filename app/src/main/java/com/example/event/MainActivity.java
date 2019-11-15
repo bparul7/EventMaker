@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user=findViewById(R.id.user);
         admin=findViewById(R.id.admin);
-        user.setOnClickListener(new View.OnClickListener() {
+        admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in=new Intent(MainActivity.this,CommonActivity.class);
+                Intent in=new Intent(MainActivity.this,AdminLogin.class);
                 startActivity(in);
             }
         });
