@@ -2,6 +2,7 @@ package com.example.event;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -29,6 +30,11 @@ public class Database_Game_Table extends SQLiteOpenHelper {
             return 0;
         else
             return 1;
+    }
+    public Cursor getListContents1() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_1, null);
+        return data;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
