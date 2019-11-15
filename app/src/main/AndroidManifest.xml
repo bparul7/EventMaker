@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Showgames"></activity>
+        <activity android:name=".UserRegister"></activity>
+        <activity android:name=".Showgames" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".IndividualActivity" />
         <activity android:name=".CommonActivity" />
