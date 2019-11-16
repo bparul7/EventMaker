@@ -5,22 +5,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
 
-public class UserRegister extends AppCompatActivity {
-    RecyclerView recyclerView;
+public class viewleaderboard extends AppCompatActivity {
     Database_Game_Table mydb;
-    String gid, gname, gsize;
+    RecyclerView recyclerView;
+
+    ArrayList<GetterSetter> a1=new ArrayList<>();
+    String gid,gname,gsize;
     GameAdapter gameAdapter;
-    ArrayList<GetterSetter> a1 = new ArrayList<GetterSetter>();
+    private Paint p = new Paint();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_register);
+        setContentView(R.layout.activity_viewleaderboard);
         mydb = new Database_Game_Table(this);
         recyclerView=findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
@@ -40,8 +44,10 @@ public class UserRegister extends AppCompatActivity {
                 }while (data.moveToNext());
             }
         }
-        gameAdapter=new GameAdapter(this,a1, 1);
+        gameAdapter=new GameAdapter(this,a1,2);
         recyclerView.setAdapter(gameAdapter);
+
+
 
     }
 }

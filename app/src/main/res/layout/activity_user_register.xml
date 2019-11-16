@@ -4,10 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".UserRegister">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLICK TO REGISTER"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textSize="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerview"/>
+        android:id="@+id/recyclerview"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

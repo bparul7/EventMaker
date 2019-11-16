@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 public class Database_Game_Table extends SQLiteOpenHelper {
     public static final String DATABASE_1 = "GAME.db";
     public static final String TABLE_1 = "game_table";
-    public static final String col0 = "Name";
-    public static final String col1 = "Id";
-    public static final String col3 = "Max_tem_size";
+    public static final String col1 = "Name";
+    public static final String col0 = "Id";
+    public static final String col2 = "Max_tem_size";
 
     public Database_Game_Table(@Nullable Context context) {
         super(context, DATABASE_1, null, 2);
@@ -22,8 +22,8 @@ public class Database_Game_Table extends SQLiteOpenHelper {
     public int adddata(String name, Integer mx) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(col0, name);
-        contentValues.put(col3, mx);
+        contentValues.put(col1, name);
+        contentValues.put(col2, mx);
 
         long result = db.insert(TABLE_1, null, contentValues);
         if (result == -1)
@@ -39,8 +39,8 @@ public class Database_Game_Table extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_1 + "("
-                + col1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + col0 + " VARCHAR UNIQUE,"
-                + col3 + " INTEGER"+" )";
+                + col0 + " INTEGER PRIMARY KEY AUTOINCREMENT," + col1 + " VARCHAR UNIQUE,"
+                + col2 + " INTEGER"+" )";
         db.execSQL(createTable);
     }
 

@@ -31,9 +31,7 @@ public class user_team extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + TABLE_1 + "("
-                + col1 + " INTEGER," + col0 + " INTEGER"
-                +" )";
+        String createTable = "CREATE TABLE user_team(userid INTEGER,teamid INTEGER,UNIQUE(userid,teamid))";
         db.execSQL(createTable);
     }
 

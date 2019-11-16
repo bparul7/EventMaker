@@ -53,7 +53,7 @@ public class Showgames extends AppCompatActivity {
                 }while (data.moveToNext());
             }
         }
-         gameAdapter=new GameAdapter(this,a1);
+         gameAdapter=new GameAdapter(this,a1,0);
         recyclerView.setAdapter(gameAdapter);
 
 

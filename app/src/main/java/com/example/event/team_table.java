@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 public class team_table extends SQLiteOpenHelper {
     public static final String DATABASE_1 = "TEAM.db";
     public static final String TABLE_1 = "team";
-    public static final String col0 = "teamname";
-    public static final String col1 = "teamid";
+    public static final String col1 = "teamname";
+    public static final String col0 = "teamid";
 
     public team_table(@Nullable Context context) {
         super(context, DATABASE_1, null, 2);
@@ -26,8 +26,8 @@ public class team_table extends SQLiteOpenHelper {
         if(data.getCount()>0){
             if(data.moveToFirst()){
                 do{
-                    if (data.getString(0).matches(tname)) {
-                        ans = Integer.parseInt(data.getString(1));
+                    if (data.getString(1).matches(tname)) {
+                        ans = Integer.parseInt(data.getString(0));
                         return ans;
                     }
                 }while (data.moveToNext());
@@ -39,7 +39,7 @@ public class team_table extends SQLiteOpenHelper {
     public int adddata(String tname) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(col0, tname);
+        contentValues.put(col1, tname);
 
         long result = db.insert(TABLE_1, null, contentValues);
         if (result == -1)
@@ -50,7 +50,7 @@ public class team_table extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_1 + "("
-                + col1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + col0 + " INTEGER UNIQUE"
+                + col0 + " INTEGER PRIMARY KEY AUTOINCREMENT," + col1 + " VARCHAR UNIQUE"
                 +" )";
         db.execSQL(createTable);
     }
