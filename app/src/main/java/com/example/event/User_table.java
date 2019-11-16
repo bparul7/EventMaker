@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 public class User_table extends SQLiteOpenHelper {
     public static final String DATABASE_1 = "USER.db";
     public static final String TABLE_1 = "user_table";
-    public static final String col0 = "UserName";
-    public static final String col1 = "Id";
+    public static final String col1 = "UserName";
+    public static final String col0 = "Id";
     public static final String col2 = "email";
 
     public User_table (@Nullable Context context) {
@@ -22,7 +22,7 @@ public class User_table extends SQLiteOpenHelper {
     public int adddata(String uname, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(col0,uname);
+        contentValues.put(col1,uname);
         contentValues.put(col2,email);
 
         long result = db.insert(TABLE_1, null, contentValues);
@@ -52,7 +52,7 @@ public class User_table extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_1 + "("
-                + col1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + col0 + " VARCHAR,"
+                + col0 + " INTEGER PRIMARY KEY AUTOINCREMENT," + col1 + " VARCHAR,"
                 + col2 + " VARCHAR UNIQUE"+")";
         db.execSQL(createTable);
     }

@@ -2,6 +2,7 @@ package com.example.event;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +22,12 @@ import java.util.ArrayList;
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyClass> {
     ArrayList<GetterSetter>a1;
     Context context;
+    int st=0; //updated
 
-
-    public GameAdapter(Context context, ArrayList<GetterSetter> a1) {
+    public GameAdapter(Context context, ArrayList<GetterSetter> a1, int val) {
         this.context=context;
         this.a1=a1;
+        this.st = val; //updated
     }
 
 
@@ -81,14 +83,20 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyClass> {
                         String tname = ed_input2.getText().toString();
                         User_table db1=new User_table(context);
                         team_table db2 = new team_table(context);
-                        db1.adddata(name, email);//aak error
-                        db2.adddata(tname);
+                        int one = db1.adddata(name, email);//aak error
+                        int two = db2.adddata(tname);
                         int uid = db1.query(email);
                         int tid = db2.query(tname);
                         user_team db3 = new user_team(context);
                         game_team db4 = new game_team(context);
-                        db3.adddata(uid, tid);
-                        db4.adddata(gid, tid);
+                        int three = db3.adddata(uid, tid);
+                        int four = db4.adddata(gid, tid);
+                        if (one==1 || two==1 || three==1 || four==1) {
+                            Toast.makeText(context, "SUCCESS", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(context, "FAILED", Toast.LENGTH_SHORT).show();
+                        }
                         //put enteries in database
 
                         // do your action with input string
@@ -106,15 +114,27 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyClass> {
         holder.gname.setText(g1.getGname());
         holder.gsize.setText(g1.getGsize());
         Log.e("GETTER",g1.getGid()+g1.getGname()+g1.getGsize());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,name,Toast.LENGTH_SHORT).show();
-                CreateAlertDialog(g1.getGname(), Integer.valueOf(g1.getGid()));
-            }
-        });
+        if (st == 1) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+                    CreateAlertDialog(g1.getGname(), Integer.valueOf(g1.getGid()));
+                }
+            });
+        }
+        else if (st == 2) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in=new Intent(context,leaderboard.class);
+                    in.putExtra("Name",g1.getGname());
+                    in.putExtra("id",g1.getGid());
+                    context.startActivity(in);
 
-
+                }
+            });
+        }
     }
 
 
