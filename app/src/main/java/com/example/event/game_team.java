@@ -2,6 +2,7 @@ package com.example.event;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -32,6 +33,14 @@ public class game_team extends SQLiteOpenHelper {
         else
             return 1;
     }
+
+
+    public Cursor getListContents1(int gid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_1, null);
+        return data;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE game_team(gameid INTEGER,teamid INTEGER,score INTEGER,UNIQUE(gameid,teamid) )";

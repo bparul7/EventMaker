@@ -19,18 +19,36 @@ public class team_table extends SQLiteOpenHelper {
         super(context, DATABASE_1, null, 2);
     }
 
-    public int query (String tname) {
+    public int query(String tname) {
         int ans = 0;
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_1 , null);
-        if(data.getCount()>0){
-            if(data.moveToFirst()){
-                do{
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_1, null);
+        if (data.getCount() > 0) {
+            if (data.moveToFirst()) {
+                do {
                     if (data.getString(1).matches(tname)) {
                         ans = Integer.parseInt(data.getString(0));
                         return ans;
                     }
-                }while (data.moveToNext());
+                } while (data.moveToNext());
+            }
+        }
+        return ans;
+    }
+
+    public String query1(Integer tid) {
+        String ans = "";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " +
+                TABLE_1, null);
+        if (data.getCount() > 0) {
+            if (data.moveToFirst()) {
+                do {
+                    if (data.getInt(1) == tid) {
+                        ans = data.getString(1);
+                        return ans;
+                    }
+                } while (data.moveToNext());
             }
         }
         return ans;
