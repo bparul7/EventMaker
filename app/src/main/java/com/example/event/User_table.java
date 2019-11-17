@@ -48,7 +48,23 @@ public class User_table extends SQLiteOpenHelper {
         }
         return ans;
     }
-
+    public String query1 (int uid) {
+        String ans = "";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " +
+                TABLE_1, null);
+        if(data.getCount()>0){
+            if(data.moveToFirst()){
+                do{
+                    if (data.getInt(0) == (uid)) {
+                        ans = (data.getString(1));
+                        return ans;
+                    }
+                }while (data.moveToNext());
+            }
+        }
+        return ans;
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_1 + "("

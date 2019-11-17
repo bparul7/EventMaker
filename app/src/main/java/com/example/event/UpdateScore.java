@@ -11,7 +11,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-public class viewleaderboard extends AppCompatActivity {
+public class UpdateScore extends AppCompatActivity {
     Database_Game_Table mydb;
     RecyclerView recyclerView;
 
@@ -19,12 +19,10 @@ public class viewleaderboard extends AppCompatActivity {
     String gid,gname,gsize;
     GameAdapter gameAdapter;
     private Paint p = new Paint();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewleaderboard);
+        setContentView(R.layout.activity_update_score);
         mydb = new Database_Game_Table(this);
         recyclerView=findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
@@ -44,7 +42,7 @@ public class viewleaderboard extends AppCompatActivity {
                 }while (data.moveToNext());
             }
         }
-        gameAdapter=new GameAdapter(this,a1,3);
+        gameAdapter=new GameAdapter(this,a1,2);
         recyclerView.setAdapter(gameAdapter);
 
 

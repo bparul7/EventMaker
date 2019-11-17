@@ -123,13 +123,16 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyClass> {
                 }
             });
         }
-        else if (st == 2) {
+        else if (st == 2 || st == 3) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent in=new Intent(context,leaderboard.class);
                     in.putExtra("Name",g1.getGname());
-                    in.putExtra("id",g1.getGid());
+                    in.putExtra("id1",g1.getGid());
+                    //st==3 viewleaderboar st==2 user
+                    in.putExtra("prevst", String.valueOf(st));
+                    Log.e("idadapter",g1.getGid());
                     context.startActivity(in);
 
                 }

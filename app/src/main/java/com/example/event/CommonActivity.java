@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class CommonActivity extends AppCompatActivity {
-    Button add,view;
+    Button add,view, update;
     Database_Game_Table mydb;
 
     @Override
@@ -23,6 +23,7 @@ public class CommonActivity extends AppCompatActivity {
         mydb = new Database_Game_Table(this);
         add=findViewById(R.id.add);
         view=findViewById(R.id.view);
+        update = findViewById(R.id.score);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,7 +37,13 @@ public class CommonActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
-
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(CommonActivity.this, UpdateScore.class);
+                startActivity(in);
+            }
+        });
 
     }
     public void CreateAlertDialog() {

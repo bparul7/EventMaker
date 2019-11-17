@@ -44,7 +44,7 @@ public class team_table extends SQLiteOpenHelper {
         if (data.getCount() > 0) {
             if (data.moveToFirst()) {
                 do {
-                    if (data.getInt(1) == tid) {
+                    if (data.getInt(0) == tid) {
                         ans = data.getString(1);
                         return ans;
                     }
