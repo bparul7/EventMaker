@@ -33,9 +33,23 @@ public class game_team extends SQLiteOpenHelper {
         else
             return 1;
     }
+    public int updatedata(int gid,int tid,int score){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+
+        contentValues.put(col2,score);
+        int res=db.update(TABLE_1,
+                contentValues,
+                col0 + " = ? AND " + col1 + " = ?",
+                new String[]{String.valueOf(gid), String.valueOf(tid)});
+        if(res==-1)
+            return 0;
+        else
+            return 1;
+    }
 
 
-    public Cursor getListContents1(int gid) {
+    public Cursor getListContents1() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_1, null);
         return data;

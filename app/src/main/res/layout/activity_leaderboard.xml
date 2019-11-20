@@ -5,16 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#24333b"
     tools:context=".leaderboard">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name"
+        android:textColor="#ffffff"
         android:id="@+id/gname"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         android:layout_gravity="center"
         android:textSize="30dp"
         android:padding="10dp"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:text="Team Name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_weight="1"
+
+        android:text="Score"/>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
